@@ -2,7 +2,7 @@
 
 Rozšíření do hry **Luanti** (dříve Minetest), které do světa přidává vrhací i kontaktní oštěpy. Mód je navržen jako čistý, otevřený Lua skript bez jakýchkoliv externích závislostí nebo spustitelných souborů.
 
-🌐 **Oficiální stahovací stránka:** [Odkaz na váš web na Vercelu](https://modforyou.vercel.app)
+🌐 **Oficiální stahovací stránka:** [Odkaz na váš web na Vercelu](https://modsforyou.vercel.app)
 
 ---
 
@@ -28,7 +28,7 @@ Mód je dostupný ve dvou samostatných variantách podle toho, jakou hru v klie
 
 ## 🛠️ Jak mód nainstalovat
 
-1. Stáhněte si příslušný `.zip` balíček z [webu projektu](https://modforyou.vercel.app) (nebo ze složky `mods/` v tomto repozitáři).
+1. Stáhněte si příslušný `.zip` balíček z [webu projektu](https://modsforyou.vercel.app) (nebo ze složky `mods/` v tomto repozitáři).
 2. Rozbalte stažený archiv. Uvnitř najdete složku pojmenovanou **`spears`**.
 3. Zkopírujte složku `spears` do adresáře `mods` ve vaší instalaci hry Luanti:
    * **Windows:** `C:\Cesta_k_Luanti\mods\`
