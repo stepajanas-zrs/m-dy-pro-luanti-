@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Spears Mod pro Luanti | Minetest Game & Mineclonia</title>
+    <title>Moje módy pro Luanti | Minetest Game & Mineclonia</title>
     <style>
         :root {
             --bg-main: #0f172a;
@@ -29,12 +29,14 @@
             padding: 20px;
         }
         .container {
-            max-width: 900px;
+            max-width: 960px;
             margin: 0 auto;
         }
         header {
             text-align: center;
-            padding: 40px 20px 30px 20px;
+            padding: 45px 20px 35px 20px;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 40px;
         }
         .badge {
             display: inline-block;
@@ -55,7 +57,7 @@
         .subtitle {
             color: var(--text-muted);
             font-size: 1.15rem;
-            max-width: 650px;
+            max-width: 680px;
             margin: 0 auto 25px auto;
         }
         .source-link {
@@ -75,106 +77,83 @@
         .source-link:hover {
             border-color: var(--text-muted);
         }
-        /* Sekce pro výběr verze ke stažení */
-        .download-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-            margin: 30px 0 45px 0;
-        }
-        .dl-card {
+        /* Jednotná karta pro každý mód */
+        .mod-group {
             background-color: var(--bg-card);
             border: 1px solid var(--border);
-            border-radius: 14px;
+            border-radius: 16px;
             padding: 30px;
+            margin-bottom: 30px;
+        }
+        .mod-header {
+            margin-bottom: 22px;
+        }
+        .mod-header h2 {
+            font-size: 1.7rem;
+            margin-bottom: 8px;
+        }
+        .mod-header p {
+            color: var(--text-muted);
+            font-size: 1rem;
+        }
+        .editions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+        .edition-box {
+            background-color: #0f172a;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
         }
-        .dl-card.mtg {
-            border-top: 4px solid var(--accent-mtg);
-        }
-        .dl-card.mcl {
-            border-top: 4px solid var(--accent-mcl);
-        }
-        .dl-tag {
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            font-weight: 700;
+        .edition-box.mtg { border-left: 4px solid var(--accent-mtg); }
+        .edition-box.mcl { border-left: 4px solid var(--accent-mcl); }
+        .edition-box h3 {
+            font-size: 1.15rem;
             margin-bottom: 8px;
         }
-        .mtg .dl-tag { color: var(--accent-mtg); }
-        .mcl .dl-tag { color: var(--accent-mcl); }
-        .dl-card h2 {
-            font-size: 1.5rem;
-            margin-bottom: 10px;
-        }
-        .dl-card p {
+        .edition-box p {
             color: var(--text-muted);
-            font-size: 0.95rem;
-            margin-bottom: 25px;
+            font-size: 0.9rem;
+            margin-bottom: 18px;
         }
+        /* Tlačítka */
         .btn {
             display: block;
             text-align: center;
-            padding: 14px 20px;
+            padding: 12px 18px;
             border-radius: 8px;
             text-decoration: none;
             font-weight: 600;
-            font-size: 1rem;
+            font-size: 0.95rem;
             transition: all 0.2s;
         }
-        .btn-mtg {
-            background-color: var(--accent-mtg);
-            color: #022c22;
-        }
-        .btn-mtg:hover {
-            background-color: var(--accent-mtg-hover);
+        .btn:hover {
             transform: translateY(-2px);
         }
-        .btn-mcl {
-            background-color: var(--accent-mcl);
-            color: #ffffff;
-        }
-        .btn-mcl:hover {
-            background-color: var(--accent-mcl-hover);
-            transform: translateY(-2px);
-        }
+        .btn-mtg { background-color: var(--accent-mtg); color: #022c22; }
+        .btn-mtg:hover { background-color: var(--accent-mtg-hover); }
+        
+        .btn-mcl { background-color: var(--accent-mcl); color: #ffffff; }
+        .btn-mcl:hover { background-color: var(--accent-mcl-hover); }
+
         .file-meta {
-            margin-top: 12px;
+            margin-top: 10px;
             font-size: 0.8rem;
             color: var(--text-muted);
             text-align: center;
-        }
-        /* Funkce módu */
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin-bottom: 40px;
-        }
-        .card {
-            background-color: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 25px;
-        }
-        .card h3 {
-            margin-bottom: 10px;
-            color: var(--text-main);
-            font-size: 1.15rem;
-        }
-        .card p {
-            color: var(--text-muted);
-            font-size: 0.95rem;
         }
         /* Návod k instalaci */
         .install-box {
             background-color: var(--bg-card);
             border: 1px solid var(--border);
-            border-radius: 12px;
+            border-radius: 16px;
             padding: 30px;
+            margin-top: 40px;
             margin-bottom: 40px;
         }
         .install-box h2 {
@@ -227,71 +206,91 @@
 
 <div class="container">
     <header>
-        <div class="badge">✓ Ověřený Open-Source Lua Mód</div>
-        <h1>Spears Mod pro Luanti</h1>
-        <p class="subtitle">Vyberte si verzi podle hry, kterou v Luanti hrajete. Čistý kód bez reklam, bez instalerů a 100% zdarma.</p>
+        <div class="badge">✓ Ověřené Open-Source Lua Módy</div>
+        <h1>Moje módy pro Luanti</h1>
+        <p class="subtitle">Oficiální stránka pro bezpečné stažení mých rozšíření do hry Luanti. U každého módu si vyberte verzi pro <strong>Minetest Game</strong> nebo <strong>Mineclonia</strong>.</p>
         
-        <a href="https://github.com/stepajanas-zrs/m-dy-pro-luanti-.git" target="_blank" rel="noopener" class="source-link">
+        <a href="https://github.com" target="_blank" rel="noopener" class="source-link">
             &lt;/&gt; Zobrazit kompletní zdrojový kód na GitHubu
         </a>
     </header>
 
-    <!-- Dvě stahovací karty vedle sebe -->
-    <section class="download-grid">
-        <!-- Karta 1: Minetest Game -->
-        <div class="dl-card mtg">
-            <div>
-                <div class="dl-tag">Edice 1</div>
-                <h2>Pro Minetest Game</h2>
-                <p>Určeno pro klasickou základní hru <strong>Minetest Game</strong> a její odvozeniny. Využívá standardní suroviny (ocel, bronz, mese, diamant).</p>
-            </div>
-            <div>
-                <a href="./mods/spears-mtg.zip" download="spears-mtg.zip" class="btn btn-mtg">
-                    ⬇ Stáhnout pro Minetest Game
-                </a>
-                <div class="file-meta">Soubor: <code>spears-mtg.zip</code> • Verze v1.0.0</div>
-            </div>
+    <!-- 1. MÓD: SPEARS -->
+    <section class="mod-group">
+        <div class="mod-header">
+            <h2>1. Spears Mod (Oštěpy)</h2>
+            <p>Rozšiřuje bojový systém o vrhací a kontaktní oštěpy s delším dosahem.</p>
         </div>
 
-        <!-- Karta 2: Mineclonia -->
-        <div class="dl-card mcl">
-            <div>
-                <div class="dl-tag">Edice 2</div>
-                <h2>Pro Mineclonia</h2>
-                <p>Plně přizpůsobeno pro hru <strong>Mineclonia</strong>. Upravené recepty, textury i poškození pro herní mechaniky a suroviny (železo, zlato, diamant, netherit).</p>
+        <div class="editions-grid">
+            <div class="edition-box mtg">
+                <div>
+                    <h3>Edice pro Minetest Game</h3>
+                    <p>Využívá standardní suroviny ze základní hry Minetest Game a jejích odvozenin.</p>
+                </div>
+                <div>
+                    <a href="./mods/spears-mtg.zip" download="spears-mtg.zip" class="btn btn-mtg">
+                        ⬇ Stáhnout pro Minetest Game
+                    </a>
+                    <div class="file-meta">Soubor: <code>spears-mtg.zip</code> • v1.0.0</div>
+                </div>
             </div>
-            <div>
-                <a href="./mods/spears-mineclonia.zip" download="spears-mineclonia.zip" class="btn btn-mcl">
-                    ⬇ Stáhnout pro Mineclonia
-                </a>
-                <div class="file-meta">Soubor: <code>spears-mineclonia.zip</code> • Verze v1.0.0</div>
+
+            <div class="edition-box mcl">
+                <div>
+                    <h3>Edice pro Mineclonia</h3>
+                    <p>Plně přizpůsobeno pro hru Mineclonia včetně odpovídajících surovin, receptů a poškození.</p>
+                </div>
+                <div>
+                    <a href="./mods/spears-mineclonia.zip" download="spears-mineclonia.zip" class="btn btn-mcl">
+                        ⬇ Stáhnout pro Mineclonia
+                    </a>
+                    <div class="file-meta">Soubor: <code>spears-mineclonia.zip</code> • v1.0.0</div>
+                </div>
             </div>
         </div>
     </section>
 
-    <section class="grid">
-        <div class="card">
-            <h3>Čistý Lua skript</h3>
-            <p>Mód neobsahuje žádné spustitelné <code>.exe</code> soubory. Jde pouze o otevřené textové skripty a textury, které si můžete před spuštěním zkontrolovat.</p>
+    <!-- 2. MÓD: MORE TOTEMS -->
+    <section class="mod-group">
+        <div class="mod-header">
+            <h2>2. More Totems</h2>
+            <p>Přidává do hry nové druhy totemů s unikátními ochrannými a podpůrnými schopnostmi.</p>
         </div>
-        <div class="card">
-            <h3>Boj zblízka i na dálku</h3>
-            <p>Oštěpy nabízejí delší dosah při výpadu a zároveň je lze vrhat na nepřátele z bezpečné vzdálenosti.</p>
-        </div>
-        <div class="card">
-            <h3>Bezpečné stažení</h3>
-            <p>Žádné přesměrování na cizí úložiště ani otravná vyskakovací okna. Soubor se stáhne přímo z tohoto webu.</p>
+
+        <div class="editions-grid">
+            <div class="edition-box mtg">
+                <div>
+                    <h3>Edice pro Minetest Game</h3>
+                    <p>Recepty a herní mechaniky totemů upravené pro klasický Minetest Game.</p>
+                </div>
+                <div>
+                    <a href="./mods/more-totems-mtg.zip" download="more-totems-mtg.zip" class="btn btn-mtg">
+                        ⬇ Stáhnout pro Minetest Game
+                    </a>
+                    <div class="file-meta">Soubor: <code>more-totems-mtg.zip</code> • v1.0.0</div>
+                </div>
+            </div>
+
+            <div class="edition-box mcl">
+                <div>
+                    <h3>Edice pro Mineclonia</h3>
+                    <p>Navrženo přímo pro Mineclonia s návazností na tamní systém totemů a surovin.</p>
+                </div>
+                <div>
+                    <a href="./mods/more-totems-mineclonia.zip" download="more-totems-mineclonia.zip" class="btn btn-mcl">
+                        ⬇ Stáhnout pro Mineclonia
+                    </a>
+                    <div class="file-meta">Soubor: <code>more-totems-mineclonia.zip</code> • v1.0.0</div>
+                </div>
+            </div>
         </div>
     </section>
 
-    <section class="install-box">
-        <h2>Jak mód nainstalovat do hry</h2>
-        <ol class="steps">
-            <li>Vyberte správnou edici výše (<strong>Minetest Game</strong> nebo <strong>Mineclonia</strong>) a stáhněte příslušný <code>.zip</code> soubor.</li>
-            <li>Rozbalte stažený archiv. Uvnitř najdete složku pojmenovanou <code>spears</code>.</li>
-            <li>Zkopírujte složku <code>spears</code> do adresáře <code>mods</code> ve vaší složce s nainstalovanou hrou Luanti.</li>
-            <li>Spusťte Luanti, vyberte svůj svět, klikněte na <strong>Nastavit (Configure)</strong> a mód <code>spears</code> povolte.</li>
-        </ol>
-    </section>
+    <!-- 3. MÓD: @a -->
+    <section class="mod-group">
+        <div class="mod-header">
+            <h2>3. Mód @a</h2>
+            <p>Praktické rozšíření pro příkazy v chatu a správu světa pomocí selektorů (např. <code>@a</code> pro všechny hráče).</p>
+        </div>
 
-    <footer>
