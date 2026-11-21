@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <!-- Tmavé pozadí s jemným zářením uprostřed -->
+    <radialGradient id="bg" cx="50%" cy="42%" r="75%">
+      <stop offset="0%" stop-color="#2b3a55"/>
+      <stop offset="100%" stop-color="#12182a"/>
+    </radialGradient>
+
+    <!-- Zlaté "epic" hrany -->
+    <linearGradient id="edge" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ffe27a"/>
+      <stop offset="100%" stop-color="#c98a1e"/>
+    </linearGradient>
+
+    <!-- Stín pod voxel -->
+    <filter id="drop" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="10" stdDeviation="14" flood-color="#000" flood-opacity="0.45"/>
+    </filter>
+  </defs>
+
+  <!-- Podklad (zaoblený čtverec jako app icon) -->
+  <rect x="0" y="0" width="512" height="512" rx="112" fill="url(#bg)"/>
+
+  <!-- Jemná mřížka = voxelový svět -->
+  <g stroke="#ffffff" stroke-opacity="0.05" stroke-width="2">
+    <path d="M128 0V512M256 0V512M384 0V512M0 128H512M0 256H512M0 384H512"/>
+  </g>
+
+  <!-- Blokový voxel -->
+  <g filter="url(#drop)">
+    <!-- levá stěna -->
+    <polygon points="128,200 256,264 256,408 128,344" fill="#8a5a2b"/>
+    <!-- pravá stěna -->
+    <polygon points="384,200 256,264 256,408 384,344" fill="#6d451f"/>
+    <!-- horní stěna -->
+    <polygon points="256,88 384,200 256,264 128,200" fill="#c98a3a"/>
+    <!-- zlaté hrany -->
+    <g fill="none" stroke="url(#edge)" stroke-width="10" stroke-linejoin="round">
+      <polygon points="256,88 384,200 384,344 256,408 128,344 128,200"/>
+      <path d="M128 200 L256 264 L384 200 M256 264 V408"/>
+    </g>
+  </g>
+
+  <!-- Šipka dolů (stahování) -->
+  <g fill="#fff">
+    <rect x="236" y="120" width="40" height="96" rx="8"/>
+    <polygon points="200,200 312,200 256,268"/>
+  </g>
+</svg>
