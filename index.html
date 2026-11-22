@@ -1,17 +1,69 @@
 <!DOCTYPE html>
 <html lang="cs">
 <header>
-    <!-- Vektorové logo v herním stylu -->
-    <div style="margin-bottom: 15px;">
-        <svg width="72" height="72" viewBox="0 0 64 64" fill="none" xmlns="http://w3.org" style="margin: 0 auto; display: block;">
-            <!-- Tmavý podklad s rámečkem -->
-            <rect x="4" y="4" width="56" height="56" rx="14" fill="#1e293b" stroke="#10b981" stroke-width="3"/>
-            <!-- Voxelová kostka v pozadí -->
-            <path d="M32 14L46 22V38L32 46L18 38V22L32 14Z" fill="#0f172a" stroke="#3b82f6" stroke-width="2.5" stroke-linejoin="round"/>
-            <path d="M32 46V30M32 30L46 22M32 30L18 22" stroke="#3b82f6" stroke-width="2.5" stroke-linejoin="round"/>
-            <!-- Zelený oštěp / hrot uprostřed -->
-            <path d="M44 18L22 40M44 18H35M44 18V27" stroke="#10b981" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
+         <!-- Působivé 3D herní SVG logo -->
+         <div style="margin-bottom: 20px;">
+            <svg width="96" height="96" viewBox="0 0 100 100" fill="none" xmlns="http://w3.org" style="margin: 0 auto; display: block; filter: drop-shadow(0 0 16px rgba(16, 185, 129, 0.35));">
+                <defs>
+                    <!-- Barevné přechody pro 3D efekt -->
+                    <linearGradient id="bgGrad" x1="0" y1="0" x2="100" y2="100" gradientUnits="userSpaceOnUse">
+                        <stop offset="0%" stop-color="#1e293b"/>
+                        <stop offset="100%" stop-color="#090d16"/>
+                    </linearGradient>
+                    <linearGradient id="borderGrad" x1="0" y1="0" x2="100" y2="100" gradientUnits="userSpaceOnUse">
+                        <stop offset="0%" stop-color="#10b981"/>
+                        <stop offset="50%" stop-color="#3b82f6"/>
+                        <stop offset="100%" stop-color="#8b5cf6"/>
+                    </linearGradient>
+                    <linearGradient id="cubeTop" x1="50" y1="22" x2="50" y2="48" gradientUnits="userSpaceOnUse">
+                        <stop offset="0%" stop-color="#34d399"/>
+                        <stop offset="100%" stop-color="#059669"/>
+                    </linearGradient>
+                    <linearGradient id="cubeLeft" x1="26" y1="35" x2="50" y2="76" gradientUnits="userSpaceOnUse">
+                        <stop offset="0%" stop-color="#2563eb"/>
+                        <stop offset="100%" stop-color="#1d4ed8"/>
+                    </linearGradient>
+                    <linearGradient id="cubeRight" x1="74" y1="35" x2="50" y2="76" gradientUnits="userSpaceOnUse">
+                        <stop offset="0%" stop-color="#1e3a8a"/>
+                        <stop offset="100%" stop-color="#0f172a"/>
+                    </linearGradient>
+                    <linearGradient id="spearGrad" x1="22" y1="78" x2="80" y2="20" gradientUnits="userSpaceOnUse">
+                        <stop offset="0%" stop-color="#94a3b8"/>
+                        <stop offset="60%" stop-color="#f8fafc"/>
+                        <stop offset="100%" stop-color="#38bdf8"/>
+                    </linearGradient>
+                </defs>
+
+                <!-- Tmavý štít / ikona s barevným okrajem -->
+                <rect x="6" y="6" width="88" height="88" rx="22" fill="url(#bgGrad)" stroke="url(#borderGrad)" stroke-width="3.5"/>
+                
+                <!-- Jemná vnitřní mřížka v pozadí -->
+                <path d="M25 6V94M50 6V94M75 6V94M6 25H94M6 50H94M6 75H94" stroke="#ffffff" stroke-opacity="0.04" stroke-width="1"/>
+
+                <!-- 3D Voxelová kostka (stínované stěny) -->
+                <!-- Horní stěna -->
+                <polygon points="50,22 74,36 50,50 26,36" fill="url(#cubeTop)"/>
+                <!-- Levá stěna -->
+                <polygon points="26,36 50,50 50,78 26,64" fill="url(#cubeLeft)"/>
+                <!-- Pravá stěna -->
+                <polygon points="74,36 50,50 50,78 74,64" fill="url(#cubeRight)"/>
+                <!-- Světlé hrany kostky pro ostrost -->
+                <polyline points="26,36 50,50 74,36" fill="none" stroke="#a7f3d0" stroke-width="1.5" stroke-opacity="0.6"/>
+                <line x1="50" y1="50" x2="50" y2="78" stroke="#60a5fa" stroke-width="1.5" stroke-opacity="0.5"/>
+
+                <!-- Zářící oštěp protínající kostku -->
+                <!-- Ratiště oštěpu -->
+                <line x1="22" y1="78" x2="72" y2="28" stroke="url(#spearGrad)" stroke-width="4.5" stroke-linecap="round"/>
+                <!-- Kovový hrot oštěpu -->
+                <polygon points="82,18 65,24 76,35" fill="#38bdf8" stroke="#ffffff" stroke-width="1.5" stroke-linejoin="round"/>
+                
+                <!-- Dekorativní světelné jiskry (pixely) -->
+                <rect x="20" y="22" width="4" height="4" rx="1" fill="#10b981"/>
+                <rect x="76" y="72" width="4" height="4" rx="1" fill="#3b82f6"/>
+                <rect x="72" y="20" width="3" height="3" rx="0.5" fill="#ffffff" fill-opacity="0.8"/>
+            </svg>
+        </div>
+
     </div>
 
     <div class="badge">✓ Ověřené Open-Source Lua Módy</div>
